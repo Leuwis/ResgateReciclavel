@@ -5,6 +5,6 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item"  href="<?php echo DOMINIO; ?>perfil"> Meu Perfil <i class="bi bi-person"></i>  </a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="recursos/php/sair.php"> Sair <i class="bi bi-x-circle"> </i> </a>
+    <a class=" dropdown-item" id="sair" style="background-color: #FF6347; color: white;" href="recursos/php/sair.php"> Sair <i class="bi bi-x-circle"> </i> </a>
   </div>
 </div>

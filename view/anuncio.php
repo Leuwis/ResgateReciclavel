@@ -22,17 +22,39 @@
                     <div class="mb-3">
                         <div class="row">
                             <div class="col-sm-12">
-                                <label for="exampleInputEmail1" class="form-label">Email</label>
-                                <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Digite o seu email." name="email">
+                                    <label for="inputName5" class="form-label">Quantidade</label>
+                                    <input id="rua" type="name" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="rua"  value="">
                             </div>
                             <div class="col-sm-12">
-                                <br>
-                                <label for="exampleInputPassword1" class="form-label">Senha</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite sua senha." name="senha" maxlength="15">
-                            </div> 
+                                    <!-- <label for="inputName5" class="form-label">Quantidade</label>
+                                    <input id="rua" type="name" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="rua"  value=""> -->
+                                    <?php 
+                                        session_start(); 
+
+                                        if( !empty($_SESSION['CodUsuario'])){
+
+                                             foreach($_SESSION as $key){
+                                                 echo $key;
+                                             }
+                                            // echo $_SESSION['Cep'];
+                                            // echo $_SESSION['Nome'];
+                                            // echo $_SESSION['CodUsuario'];
+
+                                            //  echo $_SESSION['Municipio'];
+                                            // echo $_SESSION['Bairro'];
+                                            // echo $_SESSION['Rua'];
+                                            // echo $_SESSION['Numero'];
+                                        }
+                                         
+                                        
+                                        ?>
+                                </div>
+
+
+                             
                         </div>
                     </div>  
-                    <button type="submit" class="btn btn-primary float-right" value="Entrar">Entrar</button>
+                    <button type="submit" class="btn btn-primary float-right" value="Entrar">Criar Anuncio</button>
                 </form>  
             </div>
     </div>

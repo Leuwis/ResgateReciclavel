@@ -27,7 +27,7 @@
 
     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
       <li class="nav-item">
-        <a href="<?php echo DOMINIO.'anuncio';?>" class="btn btn-outline-light" href=""> <i class="bi bi-plus-circle"></i>
+        <a href="<?php if(empty($_SESSION['CodUsuario'])){echo DOMINIO.'entrar';} else {echo DOMINIO.'anuncio';} ?>" class="btn btn-outline-light" href=""> <i class="bi bi-plus-circle"></i>
           Criar Anúncio</a>
       </li>
     </ul>

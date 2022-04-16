@@ -16,10 +16,12 @@
         }
 
         function abrirMeuPerfil() {
+            //mostrando tela meu perfil
             include "view/meuPerfil.php";
         }
         
         function telaAnuncio() {
+            //mostrando tela anuncio
             include "view/anuncio.php";
         }
 

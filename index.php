@@ -4,10 +4,10 @@
     include "controller/UsuarioController.php";
 
     //Acessando Url Projeto Arthur
-    define("DOMINIO", "http://localhost/ResgateReciclavel/");
+    //define("DOMINIO", "http://localhost/ResgateReciclavel/");
 
      //Acessando Url Projeto Deivid
-     //define("DOMINIO", "http://localhost:83/ResgateReciclavel/");
+     define("DOMINIO", "http://localhost:83/ResgateReciclavel/");
 
     if($_GET){
 

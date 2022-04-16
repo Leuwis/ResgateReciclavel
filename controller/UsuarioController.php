@@ -74,14 +74,17 @@
          $usu->senha=$_POST["senha"];
 
          $usu->buscarUsuario();
-         $dadosUsuario = $usu->buscarUsuario();
+         $dadosUsuario = $usu -> buscarUsuario();
 
          if ($dadosUsuario) {
 
-            $dado = $usu->buscarUsuario();
+            $dado = $usu -> buscarUsuario();
             session_start();
             $_SESSION['CodUsuario'] = $dado['CodUsuario'];
             $_SESSION['Nome'] = $dado['Nome'];
+            
+            
+
 
             echo "<script>
             alert('Logado com Sucesso');
