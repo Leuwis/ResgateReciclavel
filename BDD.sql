@@ -53,12 +53,12 @@ CREATE TABLE Anuncio(
     DataAnuncio DATETIME,
     -- TIPO PODE SER ADICIONADO DEPOIS tipoMaterial VARCHAR(30) NOT NULL,
     QuantidadeMaterial DECIMAL,
+    CEP CHAR(9) NOT NULL
     Estado CHAR(2),
     Municipio VARCHAR(40),
     Bairro VARCHAR (40),
     Rua VARCHAR (40),
     Numero VARCHAR(6) NOT NULL,
-    CEP CHAR(9) NOT NULL
     );
     
     

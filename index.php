@@ -2,6 +2,7 @@
 
     include "controller/HomeController.php";
     include "controller/UsuarioController.php";
+    include "controller/AnuncioController.php";
 
     //Acessando Url Projeto Arthur
     //define("DOMINIO", "http://localhost/ResgateReciclavel/");
@@ -22,10 +23,7 @@
             $entrar->telaEntrar();
           break;
 
-          case "anuncio":
-            $anun = new HomeController();
-            $anun->telaAnuncio();
-          break;
+          
 
           case "logar":
             $logar = new CadastroUsuario();
@@ -49,6 +47,16 @@
           case "perfil":
             $ini = new HomeController();
             $ini->abrirMeuPerfil();
+          break;
+
+          // case "endereco":
+          //    $home = new HomeController();
+          //    $home->abrirEndereco();
+
+          //anuncio
+          case "anuncio":
+            $anun = new AnuncioController();
+            $anun->telaAnuncio();
           break;
 
           default:

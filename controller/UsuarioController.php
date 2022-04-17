@@ -39,7 +39,7 @@
 
          echo "<div>salvos</div>";
          echo "<script>
-                alert('Dados gravados 1° com sucesso!');
+                alert('Dados gravados com sucesso!');
                 window.location=' ".DOMINIO."inicio';
              </script>"; 
       }
@@ -82,6 +82,15 @@
             session_start();
             $_SESSION['CodUsuario'] = $dado['CodUsuario'];
             $_SESSION['Nome'] = $dado['Nome'];
+            $_SESSION['CEP'] = $dado['CEP'];
+            $_SESSION['Estado'] = $dado['Estado'];
+            $_SESSION['Municipio'] = $dado['Municipio'];
+            $_SESSION['Bairro'] = $dado['Bairro'];
+            $_SESSION['Rua'] = $dado['Rua'];
+            $_SESSION['Numero'] = $dado['Numero'];
+
+
+
             
             
 
