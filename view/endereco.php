@@ -31,14 +31,7 @@
             </div>
             
         </div>
-        <div class="row">
-            <div class="col-sm-3 align-self-end mt-3">
-                    <input type="submit" class="btn btn-success btn-block" value="Cadastrar"></input>
-                </div>
-                <div class="col-sm-3 align-self-end">
-                    <input type="button" onclick="limpa()" class="btn btn-secondary btn-block" value="Limpar formulario"></input>
-                </div>
-        </div>  
+        
     </div>
         
 </div>

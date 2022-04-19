@@ -22,21 +22,24 @@
             $entrar = new HomeController();
             $entrar->telaEntrar();
           break;
-
           
-
+          case "sair":
+            $sair = new UsuarioController();
+            $sair->sair();
+          break;
+          
           case "logar":
-            $logar = new CadastroUsuario();
+            $logar = new UsuarioController();
             $logar->logar();
           break;
           
           case "cadastro":
-            $cad = new CadastroUsuario();
+            $cad = new UsuarioController();
             $cad->telaCadastro();
           break;
           
           case "cadastrarUsuario":
-            $cad = new CadastroUsuario();
+            $cad = new UsuarioController();
             $cad->cadastrar();
 
           case "inicio":

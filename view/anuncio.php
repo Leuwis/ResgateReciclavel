@@ -22,45 +22,59 @@
                         <div class="mb-3">
                             <div class="row">
                                 <div class="col-sm-12">
-                                        <label for="inputName5" class="form-label">Quantidade</label>
-                                        <input id="" type="name" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name=""  value="">
+                                        <label for="inputName5" class="form-label">Quantidade:</label>
+                                        <input id="" type="number" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name=""  value="">
                                 </div>
                                 <div class="col-sm-12">
 
                                 
-                                    
-                                    <?php 
-
-
-                                        session_start();
-
-                                        foreach($_SESSION as $KEY){
-                                            echo $KEY; echo "<br>";
-                                        }
-
-                            //             if( !empty($_SESSION['CodUsuario'])){
-
-                            //                 echo "<div class='col-sm-6 align-self-end'>
-                            //     <button type='button' class='btn btn-secondary mt-4' onclick='adicionarEnd()'>Usar endereço já registrado</button>
-                            // </div>";
-
-                            //                     $cep = $_SESSION['CEP'];
-                            //                     $estado = $_SESSION['Estado'];
-                                                
-                            //             }
-                                  
-                            //              include "view/endereco.php";
+                                                <label for="inputName5" class="form-label">Endereço:</label>
                                         
-                                         ?>
-                                    </div>
+                
+                                            <?php 
+
+
+                                                session_start();
+
+                                                if( !empty($_SESSION['CodUsuario'])){
+                                                    $cep = $_SESSION['CEP'];
+                                                    $rua = $_SESSION['Rua'];
+                                                    $num = $_SESSION['Numero'];
+
+                                                    echo "<div class='col-sm-12 align-self-end '>
+                                                        <div class='alert alert-info' role='alert'>Cep $cep, Rua $rua, Nº $num
+                                                            <div class='row'>
+
+                                                                <button type='button' class='btn btn-secondary btn-block'>Usar este endereço</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>";
+
+                                                }
+                                                echo " <button type='button' class='btn btn-dark btn-block' onclick='adicionarEnd()'>Usar outro endereço</button>
+                                                ";
+                                                include "view/endereco.php";
+                                                
+                                                ?>
+                                            </div>
+
+
+                                        
                                             
-                        <button type="submit" class="btn btn-primary float-right" value="Entrar">Criar Anuncio</button>
+                        <button type="submit" class="btn btn-primary float-right">Criar Anuncio</button>
                         
                     </form>  
                     <script src="<?php  echo DOMINIO ?>recursos/js/viaCep.js"></script>
-                    
+                    <script src ="<?php echo DOMINIO ?>recursos/js/Usuario.js"></script>
 
-                    
+                    <script></script>
+
+                        
+
+                            
+
+                               
                 </div>
             </div>
         </div>

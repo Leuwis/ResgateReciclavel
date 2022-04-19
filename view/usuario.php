@@ -41,11 +41,19 @@
                         <!-- <div class="col-sm-7 mt-3 " style="background-color: #48D1CC; padding:-10px;">
                             <p>Informar o endereço é opcional</p>
                         </div> -->
+                         
                        
-                    </div>
+                    
                     <?php include "view/endereco.php"?>
 
-                    
+                    <div class="row">
+                            <div class="col-sm-3 align-self-end mt-3">
+                                    <input type="submit" class="btn btn-success btn-block" value="Cadastrar"></input>
+                                </div>
+                                <div class="col-sm-3 align-self-end">
+                                    <input type="button" onclick="limpa()" class="btn btn-secondary btn-block" value="Limpar formulario"></input>
+                                </div>
+                       
                    
                         
             </form>  

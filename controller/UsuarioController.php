@@ -4,7 +4,7 @@
    include "model/Usuario.php";
 
 
-   class CadastroUsuario{
+   class UsuarioController{
 
       function telaCadastro(){
          
@@ -12,6 +12,7 @@
          include "view/usuario.php";
       }
 
+      
       function cadastrar(){
 
          //instanciando a classe usuario
@@ -108,6 +109,9 @@
          }
 
          
+      }
+      function sair(){
+         include "view/sair.php";
       }
    }
 

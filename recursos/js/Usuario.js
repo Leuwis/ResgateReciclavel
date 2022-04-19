@@ -23,4 +23,13 @@ function adicionarEnd(){
         end.hidden = true;
 
     }
+     }
+     function este(){ 
+         
+        if(end.hidden){
+        end.hidden = false;
+    }else{
+        end.hidden = true;
+
+    }
 }
