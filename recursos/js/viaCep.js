@@ -65,3 +65,18 @@ function pesquisaCep(valor) {
         limpar();
     }
 };
+function limpa2(){
+    
+    
+    console.log("ola"   );
+            //  document.getElementById("senha").value = "";
+            //  document.getElementById("nome").value = "";
+            //  document.getElementById("email").value = "";
+             //document.getElementById("cep").value = "";
+            // document.getElementById("uf").value = "";
+            //  document.getElementById("cidade").value = "";
+            //  document.getElementById("bairro").value = "";
+            //  document.getElementById("rua").value = "";
+            //  document.getElementById("numero").value = "";
+    
+    }

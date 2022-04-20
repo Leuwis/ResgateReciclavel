@@ -80,7 +80,7 @@
          if ($dadosUsuario) {
 
             $dado = $usu -> buscarUsuario();
-            session_start();
+            //session_start();
             $_SESSION['CodUsuario'] = $dado['CodUsuario'];
             $_SESSION['Nome'] = $dado['Nome'];
             $_SESSION['CEP'] = $dado['CEP'];

@@ -30,22 +30,38 @@ class Anuncio {
     }
 
     //cadastrar
-    function  cadastrar(){
+    function cadastrar(){
         $con = Conexao::conectar();
         $cmd = $con->prepare("INSERT INTO Anuncio(CodUsuario, StatusAnuncio, DataAnuncio, QuantidadeMaterial, CEP, Estado, Municipio, Bairro, Rua, Numero) 
-        VALUES(:codusuario, :statusanuncio, :dataanuncio, quantidadematerial, :cep, :estado, :municipio, :bairro, :rua, :numero)");
+        VALUES(:codusuario, :statusanuncio, :dataanuncio, :quantidadematerial, :cep, :estado, :municipio, :bairro, :rua, :numero)");
+
+        // $cmd = $con->prepare("INSERT INTO Anuncio(CodUsuario, DataAnuncio, QuantidadeMaterial, CEP, Estado, Municipio, Bairro, Rua, Numero) 
+        // VALUES(:codusuario, :dataanuncio, :quantidadematerial, :cep, :estado, :municipio, :bairro, :rua, :numero)");
+
 
         //enviar valores para os parâmetros SQL
         $cmd->bindParam(":codusuario",          $this->codusuario);
         $cmd->bindParam(":statusanuncio",       $this->statusanuncio);
         $cmd->bindParam(":dataanuncio",         $this->dataanuncio);
         $cmd->bindParam(":quantidadematerial",  $this->quantidadematerial);
-        $cmd->bindParam(":cep",                 $this->cep);
-        $cmd->bindParam(":estado",              $this->estado);
-        $cmd->bindParam(":municipio",           $this->municipio);
-        $cmd->bindParam(":bairro",              $this->bairro);
-        $cmd->bindParam(":rua",                 $this->rua);
-        $cmd->bindParam(":numero",              $this->numero);
+
+        // //verificando se o usuário usou um novo endereço ou o endereço padrão
+        if($this->cep !== "" && $this->numero != ""){
+            $cmd->bindParam(":cep",                 $this->cep);
+            $cmd->bindParam(":estado",              $this->estado);
+            $cmd->bindParam(":municipio",           $this->municipio);
+            $cmd->bindParam(":bairro",              $this->bairro);
+            $cmd->bindParam(":rua",                 $this->rua);
+            $cmd->bindParam(":numero",              $this->numero);            
+         }else{
+            $cmd->bindParam(":cep",                $_SESSION['CEP']);
+            $cmd->bindParam(":estado",             $_SESSION['Estado']);
+            $cmd->bindParam(":municipio",          $_SESSION['Municipio']);
+            $cmd->bindParam(":bairro",             $_SESSION['Bairro']);
+            $cmd->bindParam(":rua",                $_SESSION['Rua']);
+            $cmd->bindParam(":numero",             $_SESSION['Numero']);   
+        }
+
 
         //executar comando sql
         $cmd->execute();

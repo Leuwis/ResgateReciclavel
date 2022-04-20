@@ -38,9 +38,7 @@
                             <button type="button" class="btn btn-secondary mt-4" onclick="adicionarEnd()">Adicionar endereço</button>
                         </div>
                         
-                        <!-- <div class="col-sm-7 mt-3 " style="background-color: #48D1CC; padding:-10px;">
-                            <p>Informar o endereço é opcional</p>
-                        </div> -->
+                       
                          
                        
                     
@@ -62,12 +60,28 @@
 
     <script src="<?php  echo DOMINIO ?>recursos/js/viaCep.js"></script>
     <script src ="<?php echo DOMINIO ?>recursos/js/Usuario.js"></script>
+    <script>
+
+        function limpa(){
+            
+            document.getElementById("senha").value = "";
+            document.getElementById("nome").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("cep").value = "";
+            document.getElementById("uf").value = "";
+            document.getElementById("cidade").value = "";
+            document.getElementById("bairro").value = "";
+            document.getElementById("rua").value = "";
+            document.getElementById("numero").value = "";
+
+        }
+    </script>
+    
 
     <!-- JS Bootstrap --> 
 <script src="<?php echo DOMINIO; ?>recursos/js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="<?php echo DOMINIO; ?>recursos/js/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="<?php echo DOMINIO; ?>recursos/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
 </body>
 </html>
 

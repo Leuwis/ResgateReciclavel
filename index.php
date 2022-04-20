@@ -1,5 +1,5 @@
 <?php
-
+  session_start();
     include "controller/HomeController.php";
     include "controller/UsuarioController.php";
     include "controller/AnuncioController.php";
@@ -60,6 +60,11 @@
           case "anuncio":
             $anun = new AnuncioController();
             $anun->telaAnuncio();
+          break;
+
+          case "criarAnuncio":
+            $anun = new AnuncioController();
+            $anun->criarAnuncio();
           break;
 
           default:
