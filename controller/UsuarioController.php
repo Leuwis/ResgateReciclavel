@@ -40,7 +40,7 @@
 
          echo "<div>salvos</div>";
          echo "<script>
-                alert('Dados gravados com sucesso!');
+                alert('Dados Cadastrados com sucesso!');
                 window.location=' ".DOMINIO."inicio';
              </script>"; 
       }

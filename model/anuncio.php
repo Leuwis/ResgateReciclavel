@@ -7,6 +7,7 @@ class Anuncio {
     private $codusuario;
     private $statusanuncio;
     private $dataanuncio;
+    private $datacriacaoanuncio;
     private $quantidadematerial;
     private $cep;
     private $estado;
@@ -32,8 +33,8 @@ class Anuncio {
     //cadastrar
     function cadastrar(){
         $con = Conexao::conectar();
-        $cmd = $con->prepare("INSERT INTO Anuncio(CodUsuario, StatusAnuncio, DataAnuncio, QuantidadeMaterial, CEP, Estado, Municipio, Bairro, Rua, Numero) 
-        VALUES(:codusuario, :statusanuncio, :dataanuncio, :quantidadematerial, :cep, :estado, :municipio, :bairro, :rua, :numero)");
+        $cmd = $con->prepare("INSERT INTO Anuncio(CodUsuario, StatusAnuncio, DataAnuncio, DataCriacaoAnuncio, QuantidadeMaterial, CEP, Estado, Municipio, Bairro, Rua, Numero) 
+        VALUES(:codusuario, :statusanuncio, :dataanuncio, :datacriacaoanuncio, :quantidadematerial, :cep, :estado, :municipio, :bairro, :rua, :numero)");
 
         // $cmd = $con->prepare("INSERT INTO Anuncio(CodUsuario, DataAnuncio, QuantidadeMaterial, CEP, Estado, Municipio, Bairro, Rua, Numero) 
         // VALUES(:codusuario, :dataanuncio, :quantidadematerial, :cep, :estado, :municipio, :bairro, :rua, :numero)");
@@ -43,6 +44,7 @@ class Anuncio {
         $cmd->bindParam(":codusuario",          $this->codusuario);
         $cmd->bindParam(":statusanuncio",       $this->statusanuncio);
         $cmd->bindParam(":dataanuncio",         $this->dataanuncio);
+        $cmd->bindParam(":datacriacaoanuncio",  $this->datacriacaoanuncio);
         $cmd->bindParam(":quantidadematerial",  $this->quantidadematerial);
 
         // //verificando se o usuário usou um novo endereço ou o endereço padrão

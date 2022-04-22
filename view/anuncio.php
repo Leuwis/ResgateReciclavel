@@ -28,14 +28,14 @@
                                         <label for="inputName5" class="form-label">Data disponivel para coléta</label>
                                         <input id="" type="date" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name=""  value="data">
                                 </div> -->
-                                <div class="col-sm-12">
+                                <!-- <div class="col-sm-12">
                                         <label for="inputName5" class="form-label">Data disponivel para coléta</label>
                                         <input id="" type="text" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="data"  value="">
-                                </div>
-                                <div class="col-sm-12">
+                                </div> -->
+                                <!-- <div class="col-sm-12">
                                         <label for="inputName5" class="form-label">Hora disponivel para coléta</label>
-                                        <input id="" type="time" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="hora"  value="">
-                                </div>
+                                        <input id="" type="time" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="hora"  value="" > 
+                                </div> -->
                                 <div class="col-sm-12">
 
                                 
@@ -44,14 +44,16 @@
                 
                                             <?php 
 
-
-                                                
+                                                $escolherEnd = "informar endereço";
+                                                //$desabilita = "disabled";
 
                                                 if( !empty($_SESSION['CEP'])){
                                                     $cep = $_SESSION['CEP'];
                                                     $rua = $_SESSION['Rua'];
                                                     $num = $_SESSION['Numero'];
                                                     
+                                                    $escolherEnd = "Usar outro endereço";
+
                                                     echo "<div class='col-sm-12 align-self-end '>
                                                         <div class='alert alert-info' role='alert'>Cep $cep, Rua $rua, Nº $num
                                                             <div class='row'>
@@ -63,17 +65,18 @@
                                                     </div>";
 
                                                 }
-                                                echo " <button type='button' class='btn btn-dark btn-block' onclick='esteEnd()'>Usar outro endereço</button>
+                                                echo " <button type='button' class='btn btn-dark btn-block' onclick='esteEnd()' >$escolherEnd</button>
                                                 ";
                                                 include "view/endereco.php";
                                                 
                                                 ?>
-                                            </div>
+                                </div>
 
 
                                         
                                             
                         <button type="submit" class="btn btn-primary float-right">Criar Anuncio</button>
+                        <!-- <button type="submit" class="btn btn-primary float-right" <?php echo $desabilita;?>>Criar Anuncio</button> -->
                         
                     </form>  
                     <script src="<?php  echo DOMINIO ?>recursos/js/viaCep.js"></script>
@@ -93,7 +96,7 @@
                     }   
                     function esteEnd(){
                         end.hidden = false;
-                        console.log("olá1");
+                        alert($_SESSION['CodUsuario']);
                     }
                     </script>
                         
