@@ -6,6 +6,8 @@ class Anuncio {
     private $codanuncio;
     private $codusuario;
     private $statusanuncio;
+    private $descricao;
+    private $donoanuncio;
     private $dataanuncio;
     private $datacriacaoanuncio;
     private $quantidadematerial;
@@ -15,6 +17,7 @@ class Anuncio {
     private $bairro;
     private $rua;
     private $numero;
+    private $imagem;
 
 
     //metodos get/set
@@ -33,8 +36,8 @@ class Anuncio {
     //cadastrar
     function cadastrar(){
         $con = Conexao::conectar();
-        $cmd = $con->prepare("INSERT INTO Anuncio(CodUsuario, StatusAnuncio, DataCriacaoAnuncio, QuantidadeMaterial, CEP, Estado, Municipio, Bairro, Rua, Numero) 
-        VALUES(:codusuario, :statusanuncio, :datacriacaoanuncio, :quantidadematerial, :cep, :estado, :municipio, :bairro, :rua, :numero)");
+        $cmd = $con->prepare("INSERT INTO Anuncio(CodUsuario, DonoAnuncio, StatusAnuncio, Descricao, DataCriacaoAnuncio, QuantidadeMaterial, CEP, Estado, Municipio, Bairro, Rua, Numero) 
+        VALUES(:codusuario, :donoanuncio, :statusanuncio, :descricao, :datacriacaoanuncio, :quantidadematerial, :cep, :estado, :municipio, :bairro, :rua, :numero)");
 
         // $cmd = $con->prepare("INSERT INTO Anuncio(CodUsuario, DataAnuncio, QuantidadeMaterial, CEP, Estado, Municipio, Bairro, Rua, Numero) 
         // VALUES(:codusuario, :dataanuncio, :quantidadematerial, :cep, :estado, :municipio, :bairro, :rua, :numero)");
@@ -42,7 +45,9 @@ class Anuncio {
 
         //enviar valores para os parâmetros SQL
         $cmd->bindParam(":codusuario",          $this->codusuario);
+        $cmd->bindParam(":donoanuncio",         $this->donoanuncio);
         $cmd->bindParam(":statusanuncio",       $this->statusanuncio);
+        $cmd->bindParam(":descricao",           $this->descricao);
        
         $cmd->bindParam(":datacriacaoanuncio",  $this->datacriacaoanuncio);
         $cmd->bindParam(":quantidadematerial",  $this->quantidadematerial);

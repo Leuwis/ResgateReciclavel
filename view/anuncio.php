@@ -9,20 +9,20 @@
     <title> Criação de anúncio </title>
 </head>
 <body>
-    <div class="card mx-auto mt-5" style="width: 30rem; box-shadow: -10px 10px 11px 1px rgba(0,0,0,0.1);" >
-        <div class="card-header text-white bg-primary text-center">
-                Criar anúncio 
-        </div>
-        <div class="card-body">
-            <div class="container">
-                <div class="box">
-                    <form action="<?php echo DOMINIO. 'criarAnuncio';?>" method="POST">
-                        <div class="mb-3">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                        <label for="inputName5" class="form-label">Quantidade:</label>
-                                        <input id="" type="number" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="quantidade"  value="">
-                                </div>
+<div class="card mx-auto mt-5" style="width: 40rem; box-shadow: -10px 10px 11px 1px rgba(0,0,0,0.1);" >
+    <div class="card-header text-white bg-primary text-center">
+    Criar anúncio 
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <div class="box">
+                <form action="<?php echo DOMINIO. 'criarAnuncio';?>" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-sm-12 mb-2">
+                                <label for="inputName5" class="form-label">Quantidade:</label>
+                                <input id="" type="number" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="quantidade"  value="">
+                            </div>
 
                                 <!-- <div class="col-sm-12">
                                         <label for="inputName5" class="form-label">Data disponivel para coléta</label>
@@ -36,44 +36,43 @@
                                         <label for="inputName5" class="form-label">Hora disponivel para coléta</label>
                                         <input id="" type="time" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="hora"  value="" > 
                                 </div> -->
-                                <div class="col-sm-12">
+                            <div class="col-sm-12 mb-2">
+                            <label for="inputName5" class="form-label">Endereço:</label>
+                            <?php 
+                            $escolherEnd = "Informar endereço";
+                             //$desabilita = "disabled";
 
-                                
-                                                <label for="inputName5" class="form-label">Endereço:</label>
-                                        
-                
-                                            <?php 
-
-                                                $escolherEnd = "informar endereço";
-                                                //$desabilita = "disabled";
-
-                                                if( !empty($_SESSION['CEP'])){
-                                                    $cep = $_SESSION['CEP'];
-                                                    $rua = $_SESSION['Rua'];
-                                                    $num = $_SESSION['Numero'];
+                            if( !empty($_SESSION['CEP'])){
+                                $cep = $_SESSION['CEP'];
+                                $rua = $_SESSION['Rua'];
+                                $num = $_SESSION['Numero'];
                                                     
-                                                    $escolherEnd = "Usar outro endereço";
+                                $escolherEnd = "Usar outro endereço";
 
-                                                    echo "<div class='col-sm-12 align-self-end '>
-                                                        <div class='alert alert-info' role='alert'>Cep $cep, Rua $rua, Nº $num
-                                                            <div class='row'>
+                                echo "<div class='col-sm-12 align-self-end '>
+                                      <div class='alert alert-info' role='alert'>Cep $cep, Rua $rua, Nº $num
+                                      <div class='row'>
+                                      <button type='button' class='btn btn-secondary btn-block' onclick='limpa()'>Usar este endereço</button>
+                                     </div>
+                                     </div>
+                                     </div>";
 
-                                                                <button type='button' class='btn btn-secondary btn-block' onclick='limpa()'>Usar este endereço</button>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>";
-
-                                                }
-                                                echo " <button type='button' class='btn btn-dark btn-block' onclick='esteEnd()' >$escolherEnd</button>
-                                                ";
-                                                include "view/endereco.php";
+                            }
+                                echo " <button type='button' class='btn btn-dark btn-block' onclick='esteEnd()' >$escolherEnd</button>";
+                                include "view/endereco.php";
                                                 
-                                                ?>
-                                </div>
+                            ?>
+                            </div>
 
+                            <div class="col-sm-14 mb-2">
+                                <label for="exampleFormControlTextarea1">Informações extras: </label>
+                                <textarea name="descricao"style="resize: none;" class="form-control" maxlength="300" 
+                                placeholder="Acresente alguma informação que deseja que o coletor saiba sobre seu anuncio.
+Exemplo: Se sua rua é estreita e pessoas com carro podem ter dificuldade, se sua casa não é tão facil de ser achada e etc."
+                                id="exampleFormControlTextarea1" rows="4"></textarea>
+                            </div>
+                            
 
-                                        
                                             
                         <button type="submit" class="btn btn-primary float-right">Criar Anuncio</button>
                         <!-- <button type="submit" class="btn btn-primary float-right" <?php echo $desabilita;?>>Criar Anuncio</button> -->

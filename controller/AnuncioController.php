@@ -4,11 +4,6 @@ include "model/Anuncio.php";
 
     class AnuncioController{
 
-        //abir tela de criação de anuncio
-        function telaAnuncio(){
-            include "view/anuncio.php";
-        }
-
         //cadastrar anuncio no bd
         function criarAnuncio(){
             if(empty($_POST['quantidade'])){
@@ -19,20 +14,28 @@ include "model/Anuncio.php";
             }
             if(empty($_SESSION['CEP']) && empty($_POST['cep']) && empty($_POST['numero'])){
                 echo "<script>
-                alert('Informe um endereço!');
+                alert('Informe um endereÃ§o!');
                 window.location=' ".DOMINIO."anuncio';
                 </script>";
             }
+
             $data = date('Y-m-d');
+
+        
             //instanciando classe anuncio
             $anuncio = new Anuncio();
+            
 
-            //atribuindo valores para os atributos pelo método set
+            //atribuindo valores para os atributos pelo mÃĐtodo set
+
+            $anuncio->imagem = $imagem;
             $anuncio->statusanuncio = true;
             $anuncio->codusuario = $_SESSION['CodUsuario'];
-            $anuncio->dataanuncio = $_POST['data'];
+
             $anuncio->datacriacaoanuncio = $data;
             $anuncio->quantidadematerial = $_POST['quantidade'];
+            $anuncio->descricao = $_POST['descricao'];
+            $anuncio->donoanuncio = $_SESSION['Nome'];
 
             if(isset($_POST["cep"]) && isset($_POST["numero"])){
 

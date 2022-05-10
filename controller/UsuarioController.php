@@ -6,13 +6,7 @@
 
    class UsuarioController{
 
-      function telaCadastro(){
-         
-         //mostrando tela de cadastro
-         include "view/usuario.php";
-      }
 
-      
       function cadastrar(){
 
          //instanciando a classe usuario
@@ -47,65 +41,34 @@
 
       function logar(){
          $usu = new Usuario();
-         
-         if(empty ($_POST["email"]) && empty($_POST["senha"]))
-         {
-            echo "<script>
-            alert('Digite o email e a senha.');
-            window.location=' ".DOMINIO."entrar';
-            </script>";
-
-         } else if (empty($_POST["email"]))
-         {
-            echo "<script>
-            alert('Digite o email.');
-            window.location=' ".DOMINIO."entrar';
-            </script>";
-
-         } else if(empty($_POST["senha"]))
-         {
-            echo "<script>
-            alert('Digite a senha.');
-            window.location=' ".DOMINIO."entrar';
-            </script>";
-         }
-
-
+      
          $usu->email=$_POST["email"];
          $usu->senha=$_POST["senha"];
 
          $usu->buscarUsuario();
          $dadosUsuario = $usu -> buscarUsuario();
 
+
          if ($dadosUsuario) {
 
-            $dado = $usu -> buscarUsuario();
             //session_start();
-            $_SESSION['CodUsuario'] = $dado['CodUsuario'];
-            $_SESSION['Nome'] = $dado['Nome'];
-            $_SESSION['CEP'] = $dado['CEP'];
-            $_SESSION['Estado'] = $dado['Estado'];
-            $_SESSION['Municipio'] = $dado['Municipio'];
-            $_SESSION['Bairro'] = $dado['Bairro'];
-            $_SESSION['Rua'] = $dado['Rua'];
-            $_SESSION['Numero'] = $dado['Numero'];
+            $_SESSION['CodUsuario'] = $dadosUsuario['CodUsuario'];
+            $_SESSION['Nome'] = $dadosUsuario['Nome'];
+            $_SESSION['Email'] = $dadosUsuario['Email'];
+            $_SESSION['CEP'] = $dadosUsuario['CEP'];
+            $_SESSION['Estado'] = $dadosUsuario['Estado'];
+            $_SESSION['Municipio'] = $dadosUsuario['Municipio'];
+            $_SESSION['Bairro'] = $dadosUsuario['Bairro'];
+            $_SESSION['Rua'] = $dadosUsuario['Rua'];
+            $_SESSION['Numero'] = $dadosUsuario['Numero'];
+            $_SESSION['Descricao'] = $dadosUsuario['Descricao'];
 
-
-
-            
-            
-
-
-            echo "<script>
-            alert('Logado com Sucesso');
-            window.location=' ".DOMINIO."inicio';
-            </script>";
+            Header("Location:". DOMINIO. "inicio");
+ 
          } else 
          {
-            echo "<script>
-            alert('Erro!!');
-            window.location=' ".DOMINIO."inicio';
-            </script>";
+            $_SESSION['ErroLogar'] = true;
+            Header("Location:". DOMINIO. "entrar");
          }
 
          

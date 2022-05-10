@@ -112,6 +112,24 @@
 
 
         }
+        function buscarAnuncios(){
+            $con = Conexao::conectar();
+            $cmd = $con->prepare("SELECT * FROM Anuncio");
+            $cmd->execute();
+            return $cmd->fetchALL(PDO::FETCH_OBJ);
+        }
+
+        function buscarAnunciosUsuario(){
+            $con = Conexao::conectar();
+
+            $cmd = $con->prepare("SELECT * FROM Anuncio WHERE CodUsuario = :codusuario");
+
+            $cmd->bindParam(":codusuario", $this->codusuario);
+
+            $cmd->execute();
+
+            return $cmd->fetchALL(PDO::FETCH_OBJ);
+        }
 
     }
 
