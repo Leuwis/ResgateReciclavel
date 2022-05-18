@@ -61,9 +61,20 @@
             $sair->sair();
           break;
           
-          case "cadastrarUsuario":
+          case "alterar-nome":
+            $cad = new UsuarioController();
+            $cad->alterarNome();
+          break;
+
+          case "alterar-email":
+            $cad = new UsuarioController();
+            $cad->alterarEmail();
+          break;
+
+          case "alterar-endereco":
             $cad = new UsuarioController();
             $cad->cadastrar();
+          break;
 
           //Controllers do Anuncio.
 

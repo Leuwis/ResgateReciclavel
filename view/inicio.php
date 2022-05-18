@@ -82,20 +82,20 @@ foreach ($dadosAnuncio as $value)
   font-family: 'Raleway', sans-serif;
   } 
 </style>
-      <div class='card mx-auto mb-3' style='width: 47rem;'>
+      <div class='card mx-auto sm-3 mb-3' style='width: 55%;'>
       <div class='card-body'>
         <div class='container-fluid'>
           <div class='row'>
             <div class='col-md-5 mb-3'>
-              <p class='card-text' $tooltipRuaeBairro id='Primeiro'>$value->Rua $value->Bairro </p>
+              <p class='card-text'>$value->Rua $value->Bairro </p>
               <p class='card-text'>Quantidade de óleo: $value->QuantidadeMaterial litros</p>
             </div
           </div>
 
           <div class='row'>
             <div class='col-md-2 mb-2 ml-auto'>
-              <img $tooltipFoto id='Segundo'
-              width='210px' height='250px' src='recursos/img/Teste2.jpeg'>
+              <img
+              width='210px' height='300px' src='".DOMINIO."recursos/img/$value->Imagem'>
             </div>
           </div>
 
@@ -107,14 +107,15 @@ foreach ($dadosAnuncio as $value)
             </div>
           </div>
 
-            <div class='col-md-3 ml-auto'>
+            <div class='col-md-3  ml-auto'>
               <a href='#' class='btn btn-dark' data-toggle='modal' data-target='#Anuncio' 
-              data-donoanuncio='$value->DonoAnuncio'
               data-quantidadematerial='$value->QuantidadeMaterial'
               data-bairro='$value->Bairro'
+              data-donoanuncio='$value->Nome'
               data-rua='$value->Rua'
               data-cep='$value->CEP'
               data-numero='$value->Numero'
+              data-imagem='$value->Imagem'
               data-descricao='$value->Descricao'
               data-municipio='$value->Municipio'
               data-descricao='$value->Descricao'>Vizualizar anuncio</a>
@@ -170,9 +171,9 @@ foreach ($dadosAnuncio as $value)
               <h5 id="Descricao"></h5>
             </div>
             <div class="col-md-5 ml-auto">
-              <img
-                    width='300px' height='400px' 
-                    src="<?php echo DOMINIO; ?>recursos/img/Teste2.jpeg">
+              <?php echo "<img id='Segundo'
+              width='210px' height='250px' src='".DOMINIO."recursos/img/$value->Imagem'>" ?>
+            
             </div>
           </div>
 
@@ -221,7 +222,8 @@ foreach ($dadosAnuncio as $value)
   var cep = button.data('cep') // Extrai informação dos atributos data-*
   var descricao = button.data('descricao') // Extrai informação dos atributos data-*
 
-  // Atualiza o conteúdo do modal. Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
+  // Atualiza o conteúdo do modal. 
+  // Nós vamos usar jQuery, aqui. No entanto, você poderia usar uma biblioteca de data binding ou outros métodos.
   $("#DonoAnuncio").text(donoanuncio)
   $("#QuantidadeMaterial").text(Textoquantidadematerial)
   $("#Endereço").text(bairro + "  " + rua + "  " + numero)
@@ -229,6 +231,7 @@ foreach ($dadosAnuncio as $value)
   $("#CEP").text(cep)
   $("#Municipio").text(municipio)
   $("#Descricao").text(descricao)
+
 
 
 })

@@ -114,7 +114,8 @@
         }
         function buscarAnuncios(){
             $con = Conexao::conectar();
-            $cmd = $con->prepare("SELECT * FROM Anuncio");
+            // Tirar do BD DonoAnuncio
+            $cmd = $con->prepare("SELECT * FROM Anuncio JOIN Usuario ON Anuncio.CodUsuario = Usuario.CodUsuario");
             $cmd->execute();
             return $cmd->fetchALL(PDO::FETCH_OBJ);
         }
@@ -122,13 +123,47 @@
         function buscarAnunciosUsuario(){
             $con = Conexao::conectar();
 
-            $cmd = $con->prepare("SELECT * FROM Anuncio WHERE CodUsuario = :codusuario");
+            $cmd = $con->prepare("SELECT * FROM Anuncio  WHERE CodUsuario = :codusuario");
 
             $cmd->bindParam(":codusuario", $this->codusuario);
 
             $cmd->execute();
 
+            
+
             return $cmd->fetchALL(PDO::FETCH_OBJ);
+
+        
+        }
+
+        function alterarNome(){
+            $con = Conexao::conectar();
+
+            $cmd = $con->prepare("UPDATE Usuario SET Nome = :nome WHERE CodUsuario = :codusuario");
+
+            $cmd->bindParam(":nome", $this->nome);
+
+            $cmd->bindParam(":codusuario", $this->codusuario);
+
+            $cmd->execute();
+
+
+        
+        }
+
+        function alterarEmail(){
+            $con = Conexao::conectar();
+
+            $cmd = $con->prepare("UPDATE Usuario SET Email = :email WHERE CodUsuario = :codusuario");
+
+            $cmd->bindParam(":email", $this->email);
+
+            $cmd->bindParam(":codusuario", $this->codusuario);
+
+            $cmd->execute();
+
+
+        
         }
 
     }

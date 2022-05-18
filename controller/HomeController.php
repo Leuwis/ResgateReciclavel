@@ -28,6 +28,8 @@
             $usu = new Usuario();
             $usu->codusuario = $_SESSION['CodUsuario'];
             $dadosAnuncio = $usu->buscarAnunciosUsuario();
+
+
             include "view/meuPerfil.php";
         }
 

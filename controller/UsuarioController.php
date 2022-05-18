@@ -76,8 +76,61 @@
       function sair(){
          include "view/sair.php";
       }
-   }
 
+      function alterarNome(){
+
+         if(empty($_POST["NovoNome"])) 
+         {
+            echo "<script>
+            alert('Digite o nome para fazer a alteração');
+            window.location='".DOMINIO."meuPerfil';
+            </script>";
+         } else 
+         {
+            $usu = new Usuario();
+            $usu->codusuario     = $_SESSION["CodUsuario"]; 
+            $usu->nome           = $_POST["NovoNome"];
+            $usu->alterarNome(); 
+   
+   
+            $_SESSION['Nome'] = $usu->nome;
+   
+    
+            //alterei o direcionamento do script para consultar-usuario
+            echo "<script>
+                    alert('Dados gravados com sucesso!');
+                    window.location='".DOMINIO."meuPerfil';
+                  </script>";
+         }
+      }
+
+      function alterarEmail(){
+         if(empty($_POST["NovoEmail"])) 
+         {
+            echo "<script>
+            alert('Digite o Email para fazer a alteração');
+            window.location='".DOMINIO."meuPerfil';
+            </script>";
+         } else 
+         {
+            $usu = new Usuario();
+            $usu->codusuario     = $_SESSION["CodUsuario"]; 
+            $usu->email           = $_POST["NovoEmail"];
+            $usu->alterarEmail(); 
+   
+   
+            $_SESSION['Email'] = $usu->email;
+   
+    
+            //alterei o direcionamento do script para consultar-usuario
+            echo "<script>
+                    alert('Dados gravados com sucesso!');
+                    window.location='".DOMINIO."meuPerfil';
+                  </script>";
+         }
+
+   }
+   }
    
 
 

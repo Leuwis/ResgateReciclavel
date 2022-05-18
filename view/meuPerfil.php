@@ -10,65 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-<!--
-<div class="card-deck">
-
-<div class="card  mt-5" style="width: 100px; box-shadow: -10px 10px 11px 1px rgba(0,0,0,0.1);" >
-        <div class="card-header text-black text-center" style="background-color: #9CF0B5;">
-            Meu Perfil
-        </div>
-        <div class="card-body">
-        <div class="container">
-        <form>
-            <div class="row">
-                <div class="col">
-                <label for="formGroupExampleInput">Nome</label>
-                <input type="text" class="form-control" placeholder="First name">
-                <label for="formGroupExampleInput" class="mt-4">Email</label>
-                <input type="text" class="form-control" placeholder="First name">
-                
-                </div>
-                <div class="col">
-                </div>
-            </div>
-            </form>
-          </div>
-        </div>
-    </div>
-
-
-
-
-    <div class="card  mt-5" style="width: 100px; box-shadow: -10px 10px 11px 1px rgba(0,0,0,0.1);" >
-        <div class="card-header text-black text-center" style="background-color: #9CF0B5;">
-            Meus anuncios
-        </div>
-        <div class="card-body">
-        <div class="container">
-        <form>
-            <div class="row">
-                <div class="col">
-                <label for="formGroupExampleInput">Nome</label>
-                <input type="text" class="form-control" placeholder="First name">
-                <label for="formGroupExampleInput" class="mt-4">Email</label>
-                <input type="text" class="form-control" placeholder="First name">
-                
-                </div>
-                <div class="col">
-                </div>
-            </div>
-            </form>
-          </div>
-        </div>
-    </div>
-
-
-</div>
-
-
-     
--->
-
+    
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 div {
@@ -78,129 +20,168 @@ div {
 }
 </style>
 
-<div class="container">
-    <div class="card-deck">
-        <div class="card mt-5" style="height: 400px;">
-            <div class="card-block">
+    <div class="container">
+        <div class="col-md-9 mx-auto mb-2 mt-2">
+            <div class="card">
                 <div class="card-header text-white text-center" style="background-color: black;">
-                Meu Perfil
+                    Meu perfil
                 </div>
+
+
                 <div class="card-body">
-                    <div class="container">
+                    <form action="<?php echo DOMINIO.'alterar-nome';?>" method="post">
+                        <div class="form-group">
+                            <h5> Nome completo </h5>
+                            <input type="text" class="form-control form-control-sm" id="Nome" name="NovoNome" placeholder="<?php echo $_SESSION['Nome']; ?>">
+                            <small id="ajudaNome" class="form-text text-muted">Para fazer a alteração do nome basta digitar o nome desejado e clicar em "Alterar nome".</small>
+                            <button class="btn btn-outline-info btn-sm btn-block mt-3"> 
+                                <i class="bi bi-pencil"></i> Alterar nome 
+                            </button>
+                        </div>
+                    </form>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="Nome">Nome</label>
-                                <input type="text" class="form-control form-control-sm" id="Nome" placeholder="<?php echo $_SESSION['Nome'] ?>">
+                    <form action="<?php echo DOMINIO.'alterar-email';?>" method="post">
+                        <div class="form-group">
+                            <h5> Email </h5>
+                            <input type="email" class="form-control form-control-sm" id="Email" name="NovoEmail" placeholder="<?php echo $_SESSION['Email'] ?>">
+                            <small id="ajudaEmail" class="form-text text-muted">Para fazer a alteração do Email basta digitar o Email desejado e clicar em "Alterar Email".</small>
+                            <button class="btn btn-outline-info btn-sm btn-block mt-3"> 
+                                <i class="bi bi-pencil"></i> Alterar email 
+                            </button>
+                        </div>
+                    </form>
+
+                    <form action="<?php echo DOMINIO.'alterar-endereco';?>" method="post">
+                        <div class="row mb-2">
+                            <div class="col-md-4">
+                                <h5> CEP</h5>
+                                <input type="text" class="form-control form-control-sm" nblur="pesquisaCep(this.value);" name="cep" maxlength="9" id="CEP" placeholder="<?php echo $_SESSION['CEP'] ?>">
                             </div>
+                            <div class="col-md-3">
+                                <h5> Estado </h5>
+                                <input type="text" class="form-control form-control-sm" id="uf" name="estado" readonly placeholder="<?php echo $_SESSION['Estado'] ?>">
+                            </div>
+                            
+                            <div class="col-md-5">
+                                <h5> Municipio </h5>
+                                <input type="text" class="form-control form-control-sm" id="cidade" name="municipio" readonly placeholder="<?php echo $_SESSION['Municipio'] ?>">
+                            </div>
+
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label for="Email">Email</label>
-                                <input type="text" class="form-control form-control-sm" id="Email" placeholder="<?php echo $_SESSION['Email'] ?>">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label for="CEP">CEP</label>
-                                <input type="text" class="form-control form-control-sm" id="CEP" placeholder="<?php echo $_SESSION['CEP'] ?>">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5> Bairro</h5>
+                                <input type="text" class="form-control form-control-sm" id="bairro" name="bairro" readonly placeholder="<?php echo $_SESSION['Bairro'] ?>">
                             </div>
 
-                            <div class="form-group col-md-2">
-                                <label for="Estado">Estado</label>
-                                <input type="text" class="form-control form-control-sm" id="Estado" placeholder="<?php echo $_SESSION['Estado'] ?>">
-                            </div>   
-
-                            <div class="form-group col-md-4">
-                                <label for="Municipio">Municipio</label>
-                                <input type="text" class="form-control form-control-sm" id="Municipio" placeholder="<?php echo $_SESSION['Municipio'] ?>">
-                            </div>   
+                            <div class="col-md-5">
+                                <h5> Rua </h5>
+                                <input type="text" class="form-control form-control-sm" id="rua" name="rua" readonly placeholder="<?php echo $_SESSION['Rua'] ?>">
+                            </div>
+                            
+                            <div class="col-sm-3">
+                                <h5> Numero </h5>
+                                <input type="text" class="form-control form-control-sm" id="numero" name="numero" readonly placeholder="<?php echo $_SESSION['Numero'] ?>">
+                            </div>
 
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-5">
-                                <label for="Bairro">Bairro</label>
-                                <input type="text" class="form-control form-control-sm" id="Bairro" placeholder="<?php echo $_SESSION['Bairro'] ?>">
-                            </div>
-
-                            <div class="form-group col-md-5">
-                                <label for="Rua">Rua</label>
-                                <input type="text" class="form-control form-control-sm" id="Rua" placeholder="<?php echo $_SESSION['Rua'] ?>">
-                            </div>
-
-                            <div class="form-group col-md-2">
-                                <label for="Numero">Numero</label>
-                                <input type="text" class="form-control form-control-sm" id="Numero" placeholder="<?php echo $_SESSION['Numero'] ?>">
-                            </div>
+                        <div class="form-group mt-3">
+                            <button class="btn btn-outline-info btn-sm btn-block"> 
+                                <i class="bi bi-pencil"></i> Alterar o endereço completo 
+                            </button>
                         </div>
-                        
-                    </div>
+
+                    </form>
+
                 </div>
             </div>
         </div>
-        <div class="card mt-5">
-            <div class="card-block">
+
+
+        <style>
+        .responsive 
+        {
+        width: 100%;
+        height: 100%;
+        }
+        </style>
+
+        <div class="col-md-9 mx-auto">
+            <div class="card">
+
                 <div class="card-header text-white text-center" style="background-color: black;">
-                Meus anuncios
+                    Meus anuncios
                 </div>
-                <div class="card-body">
-                    <div class="container">
-                        <?php
-                        foreach ($dadosAnuncio as $value) 
-                        {
-                            $data=date_create($value->DataCriacaoAnuncio);
-                            $dataFormatada = date_format($data,"d/m/Y");
 
-                            echo "<div class='card mx-auto mb-3'>
-                                    <div class='card-body'>
-                                        <div class='container-fluid'>
+                <?php
+                foreach ($dadosAnuncio as $value) 
+                {
+                    $data=date_create($value->DataCriacaoAnuncio);
+                    $dataFormatada = date_format($data,"d/m/Y");
+                    echo "
+                    <div class='container'>
+                        <div class='col-md-12  mb-2 mt-2'>
+                            <div class='card'>
+                                <div class='card-body'>
 
-                                            <div class='row'>
-                                                <div class='col-md-5 mb-3'>
-                                                    <p>$value->Rua $value->Bairro </p>
-                                                    <p>Quantidade de óleo: $value->QuantidadeMaterial litros</p>
-                                                </div
-                                            </div>
+                                    <div class='row'>
+                                        <div class='col-sm-12 mb-2'>
+                                            <button class='btn btn-outline-info btn-block'> 
+                                                <i class='bi bi-pencil'></i> Alterar anuncio.
+                                            </button>
+                                        </div>
+                                    </div> 
+                                     
+                                    <div class='row'>
+                                        <div class='col-md-7'>
+                                            <h5> Endereço completo: </h5>
+                                            <h6> $value->CEP </h6>
+                                            <h6> $value->Estado </h6>
+                                            <h6> $value->Municipio </h6>
+                                            <h6> $value->Bairro </h6>
+                                            <h6> $value->Rua </h6>
+                                            <h6> $value->Numero </h6>
 
-                                            <div class='row'>
-                                                <div class='col-md-2 mb-2 ml-auto'>
-                                                    <img
-                                                    width='120px' height='170px' src='recursos/img/Teste2.jpeg'>
-                                                </div>
-                                            </div>
-
-                                            <div class='row'>
-                                                <div class='col-md-12'>
-                                                    <blockquote class='blockquote mb-0'>
-                                                        <footer style='font-size: 12px' class='blockquote-footer'>Anuncio criado em: $dataFormatada</footer>
-                                                    </blockquote>
-                                                </div>
-                                            </div>
-
-                                            <div class='col-md-2 ml-auto'>
-                                                <a href='#' class='btn btn-dark btn-sm' data-toggle='modal' data-target='#Anuncio'> Editar </a>
-                                            </div>
+                                            <h5> Quantidade de óleo: </h5>
+                                            <h6> $value->QuantidadeMaterial litros </h6>
+                                            
+                                            
+                                            <h5> Descrição: </h5>
+                                            <textarea name='descricao' style='resize: none;' class='form-control' maxlength='300' 
+                                            rows='8'> $value->Descricao </textarea>
                                             
                                         </div>
-                                       </div>
-                                    </div>
-                                   </div>";
 
-                        }
-                        ?>
-                        
+                                        <div class='col-md-5'>
+                                            <img
+                                            class='responsive' src='".DOMINIO."recursos/img/$value->Imagem'>        
+                                        </div>
+
+                                    </div>   
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    ";
+                }
+                ?>
+
+
+               
             </div>
         </div>
+
     </div>
-</div>
 
 
- 
+
+
+
+<script src="<?php  echo DOMINIO ?>recursos/js/viaCep.js"></script>
+<script src ="<?php echo DOMINIO ?>recursos/js/Usuario.js"></script>
 
 </body>
 </html>

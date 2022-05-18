@@ -27,15 +27,25 @@ include "model/Anuncio.php";
             
 
             //atribuindo valores para os atributos pelo mÃĐtodo set
-
-            $anuncio->imagem = $imagem;
+            $nomeArquivo        = $_FILES["imagem"]["name"];
+            $nomeTemp           = $_FILES["imagem"]["tmp_name"];
             $anuncio->statusanuncio = true;
             $anuncio->codusuario = $_SESSION['CodUsuario'];
+
+            // pegar a extensão do arquivo
+            $info     = new SplFileInfo($nomeArquivo);
+            $extensao = $info->getExtension();
+            $novoNome = md5(microtime()) . ".$extensao"; 
+    
+            $pastaDestino       = "recursos/img/$novoNome";
+    
+            move_uploaded_file($nomeTemp, $pastaDestino);
+    
+            $anuncio->imagem = $novoNome;
 
             $anuncio->datacriacaoanuncio = $data;
             $anuncio->quantidadematerial = $_POST['quantidade'];
             $anuncio->descricao = $_POST['descricao'];
-            $anuncio->donoanuncio = $_SESSION['Nome'];
 
             if(isset($_POST["cep"]) && isset($_POST["numero"])){
 

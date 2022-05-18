@@ -50,10 +50,12 @@ CREATE TABLE Anuncio(
 	CodAnuncio INT AUTO_INCREMENT PRIMARY KEY,
     CodUsuario INT NOT NULL,
     StatusAnuncio BOOL NOT NULL,	
+    Descricao VARCHAR(300),
 	-- DataAnuncio VARCHAR(10),
 	-- DataCriacaoAnuncio DATETIME,
     DataCriacaoAnuncio DATE,
     QuantidadeMaterial DECIMAL,
+    Imagem VARCHAR(50),
     Estado CHAR(2),
     Municipio VARCHAR(40),
     Bairro VARCHAR (40),
@@ -85,7 +87,7 @@ ALTER TABLE Anuncio
 	ADD CONSTRAINT FK_Usuario_Anuncio
     FOREIGN KEY(CodUsuario)
 	REFERENCES Usuario(CodUsuario);
-    
+        
 -- CRIANDO TABELA CHAT
 CREATE TABLE Chat(
 	CodChat INT AUTO_INCREMENT PRIMARY KEY,
@@ -103,8 +105,3 @@ ALTER TABLE Chat
 	ADD CONSTRAINT FK_ANUNCIO_CHAT
     FOREIGN KEY(CodAnuncio)
     REFERENCES Anuncio(CodAnuncio);
-
-
-
-
-    

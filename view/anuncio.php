@@ -9,7 +9,7 @@
     <title> Criação de anúncio </title>
 </head>
 <body>
-<div class="card mx-auto mt-5" style="width: 40rem; box-shadow: -10px 10px 11px 1px rgba(0,0,0,0.1);" >
+<div class="card mx-auto mt-5" style="width: 30rem; box-shadow: -10px 10px 11px 1px rgba(0,0,0,0.1);" >
     <div class="card-header text-white bg-primary text-center">
     Criar anúncio 
     </div>
@@ -71,9 +71,12 @@
 Exemplo: Se sua rua é estreita e pessoas com carro podem ter dificuldade, se sua casa não é tão facil de ser achada e etc."
                                 id="exampleFormControlTextarea1" rows="4"></textarea>
                             </div>
-                            
 
-                                            
+                            <div class="form-group">
+                                <label>Imagem</label>
+                                <input type="file" name="imagem" accept="image/*" class="form-control">
+                            </div>
+                                     
                         <button type="submit" class="btn btn-primary float-right">Criar Anuncio</button>
                         <!-- <button type="submit" class="btn btn-primary float-right" <?php echo $desabilita;?>>Criar Anuncio</button> -->
                         
