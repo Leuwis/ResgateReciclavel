@@ -5,10 +5,10 @@
     include "controller/AnuncioController.php";
 
     //Acessando Url Projeto Arthur
-    define("DOMINIO", "http://localhost/ResgateReciclavel/");
+    //define("DOMINIO", "http://localhost/ResgateReciclavel/");
 
      //Acessando Url Projeto Deivid
-     //define("DOMINIO", "http://localhost:83/ResgateReciclavel/");
+     define("DOMINIO", "http://localhost:83/ResgateReciclavel/");
 
     if($_GET){
 
@@ -45,11 +45,18 @@
             $cad->telaCadastro();
           break;
 
+          
+
           // case "endereco":
           //  $home = new HomeController();
           //  $home->abrirEndereco();
 
           // Controllers do Usuário.
+
+          case "cadastrarUsuario":
+            $cad = new UsuarioController();
+            $cad->cadastrar();
+          break;
 
           case "logar":
             $logar = new UsuarioController();

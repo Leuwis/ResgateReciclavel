@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-sm-12 mb-2">
                                 <label for="inputName5" class="form-label">Quantidade:</label>
-                                <input id="" type="number" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="quantidade"  value="">
+                                <input id="" type="number" min="1" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="quantidade"  value="">
                             </div>
 
                                 <!-- <div class="col-sm-12">
