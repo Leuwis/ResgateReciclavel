@@ -9,12 +9,10 @@ CREATE DATABASE resgateReciclavel;
 USE resgateReciclavel;
 
 -- CRIANDO A TABELA USUARIO
-
--- SELECT * FROM Usuario;
 CREATE TABLE Usuario(
 	CodUsuario INT AUTO_INCREMENT PRIMARY KEY,
 	Email VARCHAR(80) NOT NULL UNIQUE,
-    Senha VARCHAR(12) NOT NULL,
+    Senha VARCHAR(60) NOT NULL,
     Nome VARCHAR(80) NOT NULL,
     CEP CHAR(9),
     Estado CHAR(2),
@@ -23,21 +21,8 @@ CREATE TABLE Usuario(
     Rua VARCHAR (40),
     Numero VARCHAR(6)
     );	
-    
-    /*CREATE TABLE Endereco(
-    CodEndereco INT AUTO_INCREMENT PRIMARY KEY,
-	CodUsuario INT NOT NULL,
-    CEP CHAR(9) NOT NULL,
-    Estado CHAR(2),
-    Municipio VARCHAR(40),
-    Bairro VARCHAR (40),
-    Rua VARCHAR (40),
-    Numero VARCHAR(6) NOT NULL
-    );*/
 
--- Criando um indice unico no campo nome
-CREATE INDEX IDX_Nome
-	ON Usuario(Nome);
+SELECT * FROM Usuario;
     
 -- Criando um indice unico no campo Email
 CREATE INDEX IDX_Email
@@ -45,14 +30,11 @@ CREATE INDEX IDX_Email
 
 
 -- CRIANDO A TABELA ANUNCIO
--- SELECT * FROM Anuncio;
 CREATE TABLE Anuncio(
 	CodAnuncio INT AUTO_INCREMENT PRIMARY KEY,
     CodUsuario INT NOT NULL,
     StatusAnuncio BOOL NOT NULL,	
     Descricao VARCHAR(300),
-	-- DataAnuncio VARCHAR(10),
-	-- DataCriacaoAnuncio DATETIME,
     DataCriacaoAnuncio DATE,
     QuantidadeMaterial DECIMAL,
     Imagem VARCHAR(50),
@@ -63,10 +45,50 @@ CREATE TABLE Anuncio(
     Numero VARCHAR(6) NOT NULL,
     CEP CHAR(9) NOT NULL
     );
+
+-- CRIANDO TABELA MENSAGEM
+CREATE TABLE Mensagem(
+	CodMensagem INT AUTO_INCREMENT PRIMARY KEY,
+	CodAnuncio INT NOT NULL, 
+    CodUsuario INT NOT NULL, 
+    CodAnunciante INT NOT NULL, 
+    ConteudoMensagem VARCHAR(200) NOT NULL, 
+    DataEnvio DATETIME NOT NULL
+    );
+
+-- Criando um indice unico no campo nome
+CREATE INDEX IDX_Nome
+	ON Usuario(Nome);
+
+-- MODELAGEM 1:N DE USUÁRIO PARA ANUNCIO
+ALTER TABLE Anuncio
+	ADD CONSTRAINT FK_Usuario_Anuncio
+    FOREIGN KEY(CodUsuario)
+	REFERENCES Usuario(CodUsuario);
+
+
+-- CRIANDO INDICE NO CAMPO ConteudoMensagem
+-- CREATE INDEX IDX_ConteudoMensagem
+--  ON Chat(ConteudoMensagem);
     
     
--- MODELAGEM 1:N DE USUARIO PARA ENDERECO
-/*ALTER TABLE Endereco
+-- CRIANDO MODELAGEM 1:N DE ANUNCIO PARA CHAT
+ALTER TABLE Mensagem
+	ADD CONSTRAINT FK_ANUNCIO_MENSAGEM
+    FOREIGN KEY(CodAnuncio)
+    REFERENCES Anuncio(CodAnuncio);
+    
+-- CRIANDO MODELAGEM 1:N DE CHAT PARA MENSAGEM
+ALTER TABLE Mensagem 
+	ADD CONSTRAINT FK_USUARIO_MENSAGEM
+    FOREIGN KEY(CodUsuario)
+    REFERENCES Usuario(CodUsuario);
+    
+SELECT * FROM Anuncio JOIN Usuario ON Anuncio.CodUsuario = Usuario.CodUsuario WHERE Anuncio.CodUsuario != 1;
+
+    
+/*-- MODELAGEM 1:N DE USUARIO PARA ENDERECO
+ALTER TABLE Endereco
 	ADD CONSTRAINT FK_Usuario_Endereco
     FOREIGN KEY(CodUsuario)
     REFERENCES Usuario(CodUsuario);
@@ -82,26 +104,3 @@ CREATE TABLE Anuncio(
     REFERENCES Endereco(CodEndereco);
 */
     
--- MODELAGEM 1:N DE USUÁRIO PARA ANUNCIO
-ALTER TABLE Anuncio
-	ADD CONSTRAINT FK_Usuario_Anuncio
-    FOREIGN KEY(CodUsuario)
-	REFERENCES Usuario(CodUsuario);
-        
--- CRIANDO TABELA CHAT
-CREATE TABLE Chat(
-	CodChat INT AUTO_INCREMENT PRIMARY KEY,
-    CodAnuncio INT NOT NULL,
-    ConteudoMensagem VARCHAR(200) NOT NULL,
-    DataEnvio DATETIME NOT NULL
-);
-
--- CRIANDO INDICE NO CAMPO ConteudoMensagem
-CREATE INDEX IDX_ConteudoMensagem
-	ON Chat(ConteudoMensagem);
-    
--- CRIANDO MODELAGEM 1:N DE ANUNCIO PARA CHAT
-ALTER TABLE Chat
-	ADD CONSTRAINT FK_ANUNCIO_CHAT
-    FOREIGN KEY(CodAnuncio)
-    REFERENCES Anuncio(CodAnuncio);

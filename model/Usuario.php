@@ -99,13 +99,12 @@
         }
 
         //metodo entrar
-        function buscarUsuario(){
+        function logar(){
             $con = Conexao::conectar();
 
-            $cmd = $con->prepare("SELECT * FROM Usuario WHERE Email = :email AND Senha = :senha");
+            $cmd = $con->prepare("SELECT * FROM Usuario WHERE Email = :email");
 
             $cmd->bindParam(":email", $this->email);
-            $cmd->bindParam(":senha", $this->senha);
 
             $cmd->execute();
             return $cmd->fetch();
@@ -115,7 +114,7 @@
         function buscarAnuncios(){
             $con = Conexao::conectar();
             // Tirar do BD DonoAnuncio
-            $cmd = $con->prepare("SELECT * FROM Anuncio JOIN Usuario ON Anuncio.CodUsuario = Usuario.CodUsuario");
+            $cmd = $con->prepare("SELECT * FROM Usuario JOIN Anuncio ON Anuncio.CodUsuario = Usuario.CodUsuario");
             $cmd->execute();
             return $cmd->fetchALL(PDO::FETCH_OBJ);
         }
@@ -158,6 +157,33 @@
 
             $cmd->bindParam(":email", $this->email);
 
+            $cmd->bindParam(":codusuario", $this->codusuario);
+
+            $cmd->execute();
+
+
+        
+        }
+
+        function alterarEndereco(){
+            $con = Conexao::conectar();
+
+            $cmd = $con->prepare("UPDATE Anuncio SET 
+            Estado = :estado, 
+            Municipio = :municipio, 
+            Bairro = :bairro, 
+            Rua = :rua, 
+            Numero = :numero, 
+            CEP = :cep 
+
+            WHERE CodUsuario = :codusuario");
+
+            $cmd->bindParam(":cep", $this->cep);
+            $cmd->bindParam(":estado", $this->estado);
+            $cmd->bindParam(":municipio", $this->municipio);
+            $cmd->bindParam(":bairro", $this->bairro);
+            $cmd->bindParam(":rua", $this->rua);
+            $cmd->bindParam(":numero", $this->numero);
             $cmd->bindParam(":codusuario", $this->codusuario);
 
             $cmd->execute();

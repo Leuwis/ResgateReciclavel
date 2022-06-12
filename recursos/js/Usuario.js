@@ -19,7 +19,3 @@ function esteEnd(){
      console.log("olá1");
 }
 
-
-
-
-

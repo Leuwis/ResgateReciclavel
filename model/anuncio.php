@@ -118,7 +118,73 @@ class Anuncio {
 
         //executar comando sql
         $cmd->execute();
+    } 
+    function alterarEndereco(){
+        $con = Conexao::conectar();
+
+        $cmd = $con->prepare("UPDATE Anuncio SET 
+        Estado = :estado, 
+        Municipio = :municipio, 
+        Bairro = :bairro, 
+        Rua = :rua, 
+        Numero = :numero, 
+        CEP = :cep 
+
+        WHERE CodAnuncio = :codanuncio");
+
+        $cmd->bindParam(":cep",         $this->cep);
+        $cmd->bindParam(":estado",      $this->estado);
+        $cmd->bindParam(":municipio",   $this->municipio);
+        $cmd->bindParam(":bairro",      $this->bairro);
+        $cmd->bindParam(":rua",         $this->rua);
+        $cmd->bindParam(":numero",      $this->numero);
+        $cmd->bindParam(":codanuncio",  $this->codanuncio);
+
+        $cmd->execute();
+
+
+    
     }
+    function alterarQuantidadeMaterial() {
+        $con = Conexao::conectar();
+
+        $cmd = $con->prepare("UPDATE Anuncio SET 
+        QuantidadeMaterial = :quantidadematerial
+
+        WHERE CodAnuncio = :codanuncio");
+
+        $cmd->bindParam(":quantidadematerial", $this->quantidadematerial);
+        $cmd->bindParam(":codanuncio",         $this->codanuncio);
+
+        $cmd->execute();
+
+
+    }
+    function alterarDescricao(){
+        $con = Conexao::conectar();
+
+        $cmd = $con->prepare("UPDATE Anuncio SET 
+        Descricao = :descricao
+
+        WHERE CodAnuncio = :codanuncio");
+
+        $cmd->bindParam(":descricao",  $this->descricao);
+        $cmd->bindParam(":codanuncio", $this->codanuncio);
+
+        $cmd->execute();
+
+    }
+    function alterarImagem(){
+        $con = Conexao::conectar();
+        $cmd = $con->prepare("UPDATE Anuncio SET Imagem = :imagem WHERE CodAnuncio = :codanuncio");
+
+        $cmd->bindParam(":imagem",                  $this->imagem);
+        $cmd->bindParam(":codanuncio",              $this->codanuncio);
+
+        $cmd->execute();
+    }
+
+    
 }
     
 

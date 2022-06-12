@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-sm-12 mb-2">
                                 <label for="inputName5" class="form-label">Quantidade:</label>
-                                <input id="" type="number" min="1" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="quantidade"  value="">
+                                <input id="" type="number" id="inputName5" class="form-control" placeholder="Informe a quantidade de óleo disponivel em litros" aria-describedby="nameHelpBlock" name="quantidade"  value="">
                             </div>
 
                                 <!-- <div class="col-sm-12">
@@ -64,12 +64,12 @@
                             ?>
                             </div>
 
-                            <div class="col-sm-14 mb-2">
+                            <div class="col-sm-12 mb-2">
                                 <label for="exampleFormControlTextarea1">Informações extras: </label>
-                                <textarea name="descricao"style="resize: none;" class="form-control" maxlength="300" 
+                                <textarea name="descricao"style="resize: none;" class="form-control" maxlength="400" 
                                 placeholder="Acresente alguma informação que deseja que o coletor saiba sobre seu anuncio.
 Exemplo: Se sua rua é estreita e pessoas com carro podem ter dificuldade, se sua casa não é tão facil de ser achada e etc."
-                                id="exampleFormControlTextarea1" rows="4"></textarea>
+                                id="exampleFormControlTextarea1" rows="5"></textarea>
                             </div>
 
                             <div class="form-group">
@@ -81,7 +81,7 @@ Exemplo: Se sua rua é estreita e pessoas com carro podem ter dificuldade, se su
                         <!-- <button type="submit" class="btn btn-primary float-right" <?php echo $desabilita;?>>Criar Anuncio</button> -->
                         
                     </form>  
-                    <script src="<?php  echo DOMINIO ?>recursos/js/viaCep.js"></script>
+                    <script src="<?php  echo DOMINIO ?>recursos/js/viaCep4.js"></script>
                     <script src ="<?php echo DOMINIO ?>recursos/js/Usuario.js"></script>
                    
                     <script>

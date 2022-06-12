@@ -1,0 +1,16 @@
+body {
+    background: rgb(156,240,181);
+    background: linear-gradient(90deg, rgba(156,240,181,1) 0%, rgba(188,246,205,1) 15%, rgba(156,240,181,1) 40%, rgba(182,243,200,1) 60%, rgba(186,250,205,1) 85%, rgba(156,240,181,1) 100%);
+} 
+#link-container {
+    text-align: center;
+}
+#link {
+    background: black;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+    padding: 15px;
+    width: 200px;
+}
+

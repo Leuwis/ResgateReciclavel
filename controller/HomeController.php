@@ -7,8 +7,12 @@
 
             $usu = new Usuario();
             $dadosAnuncio = $usu->buscarAnuncios();
-            //mostrando tela inicial
             include "view/inicio.php";
+        }
+
+        function telaAprenderSite(){ 
+
+            include "view/aprenderSite.php";
         }
 
         function telaCadastro(){
